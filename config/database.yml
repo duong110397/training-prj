@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: password
-  host: localhost
+  username: <%= Figaro.env.USERNAME_DATABASE %>
+  password: <%= Figaro.env.PASSWORD_DATABASE %>
+  host: <%= Figaro.env.HOST %>
   socket: /var/run/mysqld/mysqld.sock
 
 development:
