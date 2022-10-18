@@ -10,10 +10,9 @@ gem 'rubocop-rails'
 gem 'figaro'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-
+gem 'devise'
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -40,7 +39,7 @@ gem "jbuilder"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-
+gem 'bootstrap-sass', '3.4.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
