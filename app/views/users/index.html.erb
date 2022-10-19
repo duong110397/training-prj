@@ -1,0 +1,20 @@
+<tbody>
+  
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Name</th>
+      <th scope="col">Birthday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <%= render user%>
+    <% end %>
+    
+  </tbody>
+</table>
+  
+</tbody>

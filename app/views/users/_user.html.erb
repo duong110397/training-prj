@@ -1,0 +1,12 @@
+
+
+<tr>
+      <th scope="row"> <%= user.id %> </th>
+      <td> <%= user.email %> </td>
+      <td> <%= user.name %> </td>
+      <td> <%= user.birthday %> </td>
+       <td>
+    <%= link_to 'Edit', user %>
+    <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>
