@@ -7,6 +7,6 @@
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-control' %>
   <%= f.label :birthday %>
-  <%= f.date_field :birthday,as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+  <%= f.date_field :birthday, class: 'form-control' %>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
