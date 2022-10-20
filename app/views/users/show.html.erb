@@ -1,5 +1,5 @@
-<li>
-<%= link_to user.name, user %>
-<%= button_to 'delete', user, method: :delete %>
-<% end %>
-</li>
+<h1> <%= @user.name %> </h1>
+<h1> <%= @user.email %> </h1>
+<h1> <%= @user.birthday %> </h1>
+<%= button_to 'delete', @user, method: :delete %> 
+<%= link_to "all user", users_url, :class => "btn btn-primary" %>

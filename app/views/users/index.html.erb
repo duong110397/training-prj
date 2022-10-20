@@ -1,6 +1,6 @@
-<tbody>
-  
-    <table class="table">
+<h1> All Users </h1>
+<%= link_to "add user", new_user_path, :class => "btn btn-primary" %>
+<table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -11,10 +11,7 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>
-    <%= render user%>
+      <%= render user %>
     <% end %>
-    
   </tbody>
 </table>
-  
-</tbody>

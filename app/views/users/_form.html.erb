@@ -1,0 +1,12 @@
+<%= form_with(model: @user, local: true) do |f| %>
+<%#= render 'shared/error_messages', object: f.object %>  <%# pass object @user vao error_meessage use object: @user%>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %>
+  <%= f.label :birthday %>
+  <%= f.date_field :birthday,as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
