@@ -11,12 +11,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save
-    if @user.errors.full_messages.any?
-      errors_message =@user.errors.full_messages.join(", ")
-      redirect_to new_user_url, :alert => errors_message
-    else
+    if @user.save
       redirect_to users_url, :notice => "create user success"
+    else
+      render :new
     end
   end
   
