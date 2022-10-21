@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:edit, :update, :show]
+
   def index
     @users = User.all
   end
@@ -8,28 +10,27 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.errors.any?
-      errors_messages = @user.errors.messages
-      redirect_to new_user_url, :alert => errors_messages
-    end
-    if @user.save
+    @user = User.new(user_params)
+    @user.save
+    if @user.errors.full_messages.any?
+      errors_message =@user.errors.full_messages.join(", ")
+      redirect_to new_user_url, :alert => errors_message
+    else
       redirect_to users_url, :notice => "create user success"
     end
   end
   
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to users_url, :notice => "update user success"
+    else
+      render :edit
     end
   end
 
@@ -42,5 +43,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :name, :password, :birthday)
+  end
+  
+  def find_user
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])   
+    else 
+      redirect_to users_url, alert: "user not exists"
+    end
   end
 end
