@@ -60,7 +60,10 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect_to root_url, :alert => "User not exists"
+    end
     redirect_to root_url, :alert => "You are not allowed" unless current_user.admin? || @user == current_user
   end
 end
