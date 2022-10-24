@@ -10,14 +10,8 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div id="myModal" class="modal">
-      <% if notice %>
-        <div class="alert alert-success" id="success-alert"> <%= notice %> </div>
-      <% end %>
-      <% if alert %>
-        <div class="alert alert-danger" id="success-alert"> <%= alert %> </div>
-      <% end %>
-    </div>
+    <%= render 'layouts/flash' %>
+    <%= render 'layouts/navbar' %>
     <%= yield %>
   </body>
 </html>
