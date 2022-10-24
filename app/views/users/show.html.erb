@@ -1,0 +1,5 @@
+<h1> <%= @user.name %> </h1>
+<h1> <%= @user.email %> </h1>
+<h1> <%= @user.birthday %> </h1>
+<%= button_to 'delete', @user, form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %> 
+<%= link_to "all user", users_url, :class => "btn btn-primary" %>

@@ -1,5 +1,4 @@
+<%= link_to "All users", users_url, :class => "btn btn-primary" %>
 <h1> Hello world </h1>
-<% if user_signed_in? %>
-  <%= button_to "Logout", destroy_user_session_path, method: :delete, :class => "logout btn btn-danger" %>
-  <h1> Hello <%= current_user.email %> </h1>
-<% end %>
+<%= button_to "Logout", destroy_user_session_path, method: :delete, :class => "logout btn btn-danger" %>
+<h1> Hello <%= current_user.email %> </h1>

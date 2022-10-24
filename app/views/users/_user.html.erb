@@ -1,0 +1,11 @@
+<tr>
+  <th scope="row"> <%= user.id %> </th>
+  <td> <%= user.email %> </td>
+  <td> <%= user.name %> </td>
+  <td> <%= user.birthday.to_datetime.strftime("%d/%m/%Y") %> </td>
+  <td>
+    <%= link_to 'Edit', edit_user_path(user) %>
+    <%= button_to 'Destroy', user, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+    <%= link_to 'View', user %>
+  </td>
+</tr>
