@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  enum role: [:user, :admin]
   after_create :send_email_create_user
   before_validation :downcase_email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
