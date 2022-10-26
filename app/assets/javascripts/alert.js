@@ -1,10 +1,9 @@
-let modal = document.getElementById("myModal");
 function closeAlert(duration) {
   setTimeout(() => {
-    modal.parentNode.removeChild(modal);
+    $("#myModal").css("display", "none");
   }, duration);
 }
-window.onload = () => {
+$(window).on("load", function () {
   closeAlert(2000);
-  modal.style.display = "block";
-};
+  $("#myModal").css("display", "block");
+});
