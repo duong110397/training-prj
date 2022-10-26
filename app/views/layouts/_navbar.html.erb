@@ -19,7 +19,7 @@
           <div class="collapse navbar-collapse navbar-flex" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item">
-                <%= link_to "Changepassword",  edit_user_registration_path%>
+                <%= link_to "Changepassword", edit_user_registration_path%>
               </li>
               <li class="nav-item">
                 <a><%= button_to "Logout", destroy_user_session_path, method: :delete, :class => "btn-delete" %></a>
@@ -28,4 +28,5 @@
           </div>
         </div>
       </nav>
+      <div class="containner-content">
 <% end %>
