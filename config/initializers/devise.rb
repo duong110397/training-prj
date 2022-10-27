@@ -269,7 +269,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   # ==> OmniAuth
-  config.omniauth :google_oauth2, "830955282184-3jefv92eatq2hfg5pa6167p41kq2r292.apps.googleusercontent.com", "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"
+  config.omniauth :google_oauth2, Figaro.env.GOOGLE_OAUTH_CLIENT_ID, Figaro.env.GOOGLE_OAUTH_CLIENT_SECRET
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'

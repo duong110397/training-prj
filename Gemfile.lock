@@ -154,7 +154,7 @@ GEM
     net-smtp (0.3.2)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.13.8-x86_64-linux)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -315,7 +315,8 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   omniauth
   omniauth-google-oauth2
-  omniauth-rails_csrf_protection
+  omniauth-oauth2
+  omniauth-rails_csrf_protection (~> 1.0)
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.4)
