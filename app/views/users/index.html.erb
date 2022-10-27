@@ -1,5 +1,7 @@
 <h1> All Users </h1>
-<%= link_to "add user", new_user_path, :class => "btn btn-primary" %>
+<% if current_user.admin? %>
+  <%= link_to "add user", new_user_path, :class => "btn btn-primary" %>
+<% end %>
 <table class="table">
   <thead>
     <tr>

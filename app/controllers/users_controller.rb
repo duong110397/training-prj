@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update, :show]
+  before_action :admin_role, only: [:new, :destroy, :create]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -49,5 +51,17 @@ class UsersController < ApplicationController
     else 
       redirect_to users_url, alert: "user not exists"
     end
+  end
+
+  def admin_role
+    unless current_user.admin?
+      redirect_to root_url, :alert => "You are not allowed"
+    end
+  end
+
+  def correct_user
+    @user = User.find_by(id: params[:id])
+    redirect_to root_url, :alert => "User not exists" if @user.nil?
+    redirect_to root_url, :alert => "You are not allowed" unless current_user.admin? || @user == current_user
   end
 end

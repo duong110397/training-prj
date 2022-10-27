@@ -1,13 +1,14 @@
 class User < ApplicationRecord
+  enum role: [:user, :admin]
   after_create :send_email_create_user
   before_validation :downcase_email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   #delete devise validate to custome validate
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+         :recoverable, :rememberable, :validatable
   validates :name, presence: true, length: {maximum: 50, message: "name is so long, please choose short name"}, uniqueness: true
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX, message: "email is invalid"}
-  validates :password, presence: true
+  validates :password, presence: true, :on => :create 
   private
   
   def downcase_email
