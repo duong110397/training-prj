@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true, length: {maximum: 50, message: "name is so long, please choose short name"}, uniqueness: true
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX, message: "email is invalid"}
-  validates :password, presence: true, :on => :create 
+  validates :password, presence: true, :on => :create ,abcd
   private
   
   def downcase_email
