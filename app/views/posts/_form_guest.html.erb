@@ -1,0 +1,13 @@
+<%= form_with(model: @post, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :title, placeholder: "title posts..." %>
+  </div>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "content new post..." %>
+  </div>
+  <span class="image">
+    <%= f.file_field :image , accept: "image/jpeg,image/gif,image/png"%>   <%# file field to upload image%>
+  </span>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

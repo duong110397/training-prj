@@ -17,6 +17,8 @@ gem "mysql2", "~> 0.5"
 gem "puma", "~> 5.0"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'image_processing', "~> 1.0"
+gem 'active_storage_validations'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
