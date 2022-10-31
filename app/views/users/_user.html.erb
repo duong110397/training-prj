@@ -2,7 +2,7 @@
   <th scope="row"> <%= user.id %> </th>
   <td> <%= user.email %> </td>
   <td> <%= user.name %> </td>
-  <td> <%= user.birthday.strftime("%d/%m/%Y") %> </td>
+  <td> <%= user.birthday.strftime("%d/%m/%Y") if user.birthday %> </td>
   <% if current_user.admin? || user == current_user %>
     <td> <%= link_to 'Edit', edit_user_path(user) %> </td>
   <% end%>

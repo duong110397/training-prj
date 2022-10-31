@@ -5,10 +5,20 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   #delete devise validate to custome validate
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
   validates :name, presence: true, length: {maximum: 50, message: "name is so long, please choose short name"}, uniqueness: true
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX, message: "email is invalid"}
   validates :password, presence: true, :on => :create 
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name 
+    end
+  end
+
   private
   
   def downcase_email
