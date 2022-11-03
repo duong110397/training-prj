@@ -2,17 +2,15 @@
   <div class="card-image">
     <%= image_tag @post.image if @post.image.attached? %>
   </div>
-  <div class="card-bottom">
-    <div class="user">
-      <div class="avatar">
-        <img src="/assets/calendar.png" alt="" />
-      </div>
-      <span class="username"><%= @post.user.name %></span>
-    </div>
-  </div>
+  <div class="card-bottom"></div>
   <div class="card-meta">
     <div class="card-top">
-      <p class="cat"><%= @post.status %></p>
+      <div class="user">
+        <div class="avatar">
+          <img src="/assets/avatar1.png" alt="" />
+        </div>
+        <span class="username"><%= @post.user ? @post.user.name : "Anonymous" %></span>
+      </div>
       <span class="date"><%= time_ago_in_words(@post.created_at) %></span>
     </div>
     <h2 class="card-title"><a href="#"><%= @post.title %></a></h2>

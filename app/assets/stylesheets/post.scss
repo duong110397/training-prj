@@ -22,7 +22,9 @@ html {
   margin: auto;
   padding: 20px 40px;
 }
-
+.blog-btn {
+  margin-left: 46px;
+}
 .card {
   margin-bottom: 20px;
   display: flex;
@@ -116,7 +118,8 @@ html {
   &.-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 12px;
     .card {
       width: calc(33.33333% - 10px);
       display: block;
@@ -138,6 +141,12 @@ html {
         margin-top: 1rem;
       }
     }
+  }
+  .btn-guest {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
   }
 }
 .tabs {
