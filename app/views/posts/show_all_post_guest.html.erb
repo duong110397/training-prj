@@ -21,8 +21,8 @@
       </div>
     </div>
     <div class="btn-guest">
-    <%= button_to 'approve', posts_guest_path(:id => post.id, :commit_status => "approve"), :method => :patch, :class => "btn btn-success" %> 
-    <%= button_to 'reject', posts_guest_path(:id => post.id, :commit_status => "reject"), :method => :patch, :class => "btn btn-danger" %>
+    <%= link_to 'approve', posts_guest_path(:id => post.id, :commit_status => "approve"), :method => :patch, :class => "btn btn-success" %> 
+    <%= link_to 'reject', posts_guest_path(:id => post.id, :commit_status => "reject"), :method => :patch, :class => "btn btn-danger" %>
     </div>
   </div>
   <% end %>

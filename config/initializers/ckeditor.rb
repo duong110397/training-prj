@@ -1,13 +1,12 @@
-# frozen_string_literal: true
-
 # Use this hook to configure ckeditor
 Ckeditor.setup do |config|
+  config.cdn_url = "//cdn.ckeditor.com/4.6.1/basic/ckeditor.js"
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default), :mongo_mapper and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'ckeditor/orm/active_record'
-  # config.cdn_url = "//cdn.ckeditor.com/4.6.1/basic/ckeditor.js"
+
   # Allowed image file types for upload.
   # Set to nil or [] (empty array) for all file types
   # By default: %w(jpg jpeg png gif tiff)
@@ -25,7 +24,7 @@ Ckeditor.setup do |config|
 
   # Setup authorization to be run as a before filter
   # By default: there is no authorization.
-  # config.authorize_with :cancancan
+  # config.authorize_with :cancan
 
   # Override parent controller CKEditor inherits from
   # By default: 'ApplicationController'
@@ -43,10 +42,15 @@ Ckeditor.setup do |config|
   # By default: nil
   # config.asset_path = 'http://www.example.com/assets/ckeditor/'
 
+  # To reduce the asset precompilation time, you can limit plugins and/or languages to those you need:
+  # By default: nil (no limit)
+  # config.assets_languages = ['en', 'uk']
+  # config.assets_plugins = ['image', 'smiley']
+
   # CKEditor CDN
   # More info here http://cdn.ckeditor.com/
   # By default: nil (CDN disabled)
-  # config.cdn_url = '//cdn.ckeditor.com/4.11.3/standard/ckeditor.js'
+  # config.cdn_url = '//cdn.ckeditor.com/4.7.1/standard/ckeditor.js'
 
   # JS config url
   # Used when CKEditor CDN enabled
