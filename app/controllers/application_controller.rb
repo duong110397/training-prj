@@ -6,9 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_role
-    unless current_user.admin?
-      redirect_to root_url, :alert => "You are not allowed"
-    end
+    redirect_to root_url, :alert => "You are not allowed" unless current_user.admin?
   end
 
   def configure_permitted_parameters
