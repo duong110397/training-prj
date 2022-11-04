@@ -4,10 +4,10 @@
   <td> <%= user.name %> </td>
   <td> <%= user.birthday.strftime("%d/%m/%Y") if user.birthday %> </td>
   <% if current_user.admin? || user == current_user %>
-    <td> <%= link_to 'Edit', edit_user_path(user) %> </td>
-  <% end%>
-  <% if current_user.admin? %>
-    <td> <%= button_to 'Destroy', user, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %> </td>
+    <td> <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary" %> </td>
   <% end %>
-  <td> <%= link_to 'View', user %> </td>
+  <% if current_user.admin? %>
+    <td> <%= link_to "delete", user_path(user), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %> </td>
+  <% end %>
+  <td> <%= link_to 'View', user, class: "btn btn-info" %> </td>
 </tr>

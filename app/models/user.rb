@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
   enum role: [:user, :admin]
   after_create :send_email_create_user
   before_validation :downcase_email

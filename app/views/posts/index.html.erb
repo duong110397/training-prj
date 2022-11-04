@@ -1,0 +1,10 @@
+<div class="box-cards-blog -grid">
+  <% @posts.each do |post| %>
+    <%= render post %>
+  <% end %>
+</div>
+<% if user_signed_in? %> 
+  <%= link_to "Create Blog", new_post_path, :class => "btn btn-primary blog-btn" %>
+<% else %>
+  <%= link_to "Create Blog With As Guest", posts_guest_path, :class => "btn btn-primary blog-btn" %>
+<% end %>

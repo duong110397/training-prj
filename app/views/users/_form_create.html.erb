@@ -7,6 +7,6 @@
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-control' %>
   <%= f.label :birthday %>
-  <%= f.text_field :birthday, class: 'form-control datepicker' %>
+  <%= f.text_field :birthday, class: 'form-control datepicker', :readonly => true %>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
