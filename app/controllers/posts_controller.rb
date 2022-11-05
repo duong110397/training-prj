@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :logged_in, except: [:index, :new_post_guest, :show, :create_post_guest]
-  before_action :find_post, only: [:show, :edit, :update, :confirm_post_guest]
-  before_action :admin_role, only: [:confirm_post_guest, :all_posts_guest]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :logged_in, except: [:index, :show_post_guest, :show, :create_post_guest]
+  before_action :find_post, only: [:show, :edit, :update, :approve_post_guest, :destroy]
+  before_action :admin_role, only: [:destroy, :approve_post_guest, :show_all_post_guest]
+  before_action :correct_user, only: [:edit, :update]
   def index
     @posts = Post.where(status: "public_post").order(created_at: :desc)
   end
@@ -59,8 +59,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
-    redirect_to root_url, :alert => "delete post success"
+    @post.destroy
   end
 
   def my_posts

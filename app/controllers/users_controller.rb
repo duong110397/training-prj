@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in
-  before_action :find_user, only: [:edit, :update, :show]
+  before_action :find_user, only: [:edit, :update, :show, :destroy]
   before_action :admin_role, only: [:new, :destroy, :create]
   before_action :correct_user, only: [:edit, :update]
   def index
@@ -35,8 +35,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to users_url, :alert => "delete user success"
+    @user.destroy    
   end
 
   private
@@ -49,7 +48,7 @@ class UsersController < ApplicationController
     if User.exists?(params[:id])
       @user = User.find(params[:id])   
     else 
-      redirect_to users_url, alert: "user not exists"
+      redirect_to users_url, :alert => "user not exists"
     end
   end
 
