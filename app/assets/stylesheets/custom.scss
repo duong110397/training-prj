@@ -15,9 +15,23 @@ body {
   align-items: center;
   justify-content: center;
 }
+input.datepicker {
+  background-image: url("assets/calendar.png");
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+}
+input.datepicker:hover {
+  cursor: pointer;
+}
+.btn-submit {
+  margin-top: 20px;
+}
 .form-control {
   width: 33%;
+  margin: 10px;
 }
+
 .modal {
   z-index: 9999;
   display: none;

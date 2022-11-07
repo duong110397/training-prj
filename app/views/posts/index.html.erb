@@ -6,5 +6,5 @@
 <% if user_signed_in? %> 
   <%= link_to "Create Blog", new_post_path, :class => "btn btn-primary blog-btn" %>
 <% else %>
-  <%= link_to "Create Blog With As Guest", posts_guest_path, :class => "btn btn-primary blog-btn" %>
+  <%= link_to "Create Blog With As Guest", new_post_guest_posts_path, :class => "btn btn-primary blog-btn" %>
 <% end %>

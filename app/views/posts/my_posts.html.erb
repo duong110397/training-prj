@@ -1,0 +1,31 @@
+<h1>Posts of me</h1>
+<div class="box-cards-blog -list">
+  <% @posts.each do |post| %>
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag post.image if post.image.attached? %>
+      </div>
+      <div class="card-meta">
+        <div class="card-top">
+          <p class="cat"><%= post.status %></p>
+          <span class="date"><%= time_ago_in_words(post.created_at) %></span>
+        </div>
+        <div class="card-title">
+          <h2 class="card-title"><%= link_to post.title, post %></h2>
+          <% if current_user.admin? || post.user == current_user %>
+            <%= link_to "delete", post_path(post), method: :delete, class: "btn btn-danger delete", remote: true, data: {confirm: "Are you sure?"} %>
+          <% end %>
+        </div>
+        <div class="card-bottom">
+          <div class="user">
+            <div class="avatar">
+              <img src="/assets/avatar1.png" alt="" />
+            </div>
+            <span class="username"><%= post.user ? post.user.name : "Anonymous" %></span>
+          </div>
+          <%= link_to "Read more → ", post, :class => "readmore" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

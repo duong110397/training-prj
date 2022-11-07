@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
-  before_action :logged_in, except: [:index, :show_post_guest, :show, :create_post_guest]
-  before_action :find_post, only: [:show, :edit, :update, :approve_post_guest]
-  before_action :admin_role, only: [:destroy, :approve_post_guest, :show_all_post_guest]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in, except: [:index, :new_post_guest, :show, :create_post_guest]
+  before_action :find_post, only: [:show, :edit, :update, :confirm_post_guest]
+  before_action :admin_role, only: [:confirm_post_guest, :all_posts_guest]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   def index
-    @posts = Post.where(status: 1).order(created_at: :desc)
+    @posts = Post.where(status: "public_post").order(created_at: :desc)
   end
     
   def new
-    @post =Post.new
+    @post = Post.new
   end
 
   def create
@@ -21,26 +21,26 @@ class PostsController < ApplicationController
     end
   end
   
-  def show_all_post_guest
-    @posts = Post.where(commit_status: 0)
+  def all_posts_guest
+    @posts = Post.where(commit_status: "waiting_status")
   end
 
-  def show_post_guest
+  def new_post_guest
   end
 
-  def approve_post_guest
+  def confirm_post_guest
     commit_status = params[:commit_status]
     if commit_status == 'approve'
-      @post.update(commit_status: 2, status: 1)
+      @post.update(commit_status: "approve_status", status: "public_post")
       redirect_to root_url, :notice => "Has Approve post public" 
     elsif commit_status == 'reject'
-      @post.update(commit_status: 1, status: 0)
+      @post.update(commit_status: "reject_status", status: "non_public")
       redirect_to root_url, :alert => "Has Reject post" 
     end
   end
   
   def create_post_guest  
-    @post = Post.new(title: params[:title], content: params[:content], commit_status: 0, status: 0)
+    @post = Post.new(title: params[:title], content: params[:content], commit_status: "waiting_status", status: "non_public")
     @post.image.attach(params[:image])
     if @post.save
       redirect_to root_url, :notice => "You have successfully posted, your post is waiting for approval"
@@ -63,16 +63,16 @@ class PostsController < ApplicationController
     redirect_to root_url, :alert => "delete post success"
   end
 
-  def postme
+  def my_posts
     @posts = Post.where(user_id: current_user.id)
   end
-  
-	private
-	
-	def find_post
-		@post = Post.find_by(id: params[:id])
-		redirect_to root_url, :alert => "Post not exist" if @post.nil?
-	end
+
+  private
+
+  def find_post
+    @post = Post.find_by(id: params[:id])
+    redirect_to root_url, :alert => "Post not exist" if @post.nil?
+  end
 
   def post_params
     params.require(:post).permit(:content, :title, :status, :image)

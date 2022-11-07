@@ -55,6 +55,9 @@ html {
     font-size: 2rem;
     margin: 0px;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     > a {
       display: block;
       color: $title;
