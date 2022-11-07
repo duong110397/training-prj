@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :admin_role, only: [:confirm_post_guest, :all_posts_guest]
   before_action :correct_user, only: [:edit, :update, :destroy]
   def index
-    @posts = Post.where(status: Post.statuses[:public_post]).order(created_at: :desc)
+    @posts = Post.where(status: "public_post").order(created_at: :desc)
   end
     
   def new
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
   
   def all_posts_guest
-    @posts = Post.where(commit_status: Post.commit_statuses[:waiting_status])
+    @posts = Post.where(commit_status: "waiting_status")
   end
 
   def new_post_guest
@@ -31,16 +31,16 @@ class PostsController < ApplicationController
   def confirm_post_guest
     commit_status = params[:commit_status]
     if commit_status == 'approve'
-      @post.update(commit_status: Post.commit_statuses[:approve_status], status: Post.statuses[:public_post])
+      @post.update(commit_status: "approve_status", status: "public_post")
       redirect_to root_url, :notice => "Has Approve post public" 
     elsif commit_status == 'reject'
-      @post.update(commit_status: Post.commit_statuses[:reject_status], status: Post.statuses[:non_public])
+      @post.update(commit_status: "reject_status", status: "non_public")
       redirect_to root_url, :alert => "Has Reject post" 
     end
   end
   
   def create_post_guest  
-    @post = Post.new(title: params[:title], content: params[:content], commit_status: 0, status: 0)
+    @post = Post.new(title: params[:title], content: params[:content], commit_status: "waiting_status", status: "non_public")
     @post.image.attach(params[:image])
     if @post.save
       redirect_to root_url, :notice => "You have successfully posted, your post is waiting for approval"
