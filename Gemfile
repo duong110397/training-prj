@@ -13,6 +13,7 @@ gem "sprockets-rails"
 gem 'devise'
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
+gem 'slack-ruby-client'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 gem 'jquery-rails'
