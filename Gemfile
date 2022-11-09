@@ -12,19 +12,16 @@ gem 'figaro'
 gem "sprockets-rails"
 gem 'devise'
 # Use mysql as the database for Active Record
-gem "mysql2", "~> 0.5"
+gem "pg", "~> 1.1"
 gem 'slack-ruby-client'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
 gem 'ckeditor', '4.2.4'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
