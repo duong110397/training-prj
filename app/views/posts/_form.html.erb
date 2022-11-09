@@ -1,19 +1,19 @@
 <%= form_with(model: @post, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%=f.label :title %><br> 
+    <%= f.label :title %><br> 
     <%= f.text_field :title , class: 'form-control', placeholder: "title posts..." %>
   </div>
   <div class=”field“>
-    <%=f.label :content %><br>
+    <%= f.label :content %><br>
     <%= f.cktext_area :content, class: "ckeditor", ckeditor: { language: 'jp'} %>
   </div>
   <div class="field">
-    <%=f.label :status %><br>
+    <%= f.label :status %><br>
     <%= f.select :status, ["non_public","public_post"] %>
   </div>
   <span class="image">
-    <%=f.label :image %><br>
+    <%= f.label :image %><br>
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png"%> 
   </span>
   <%= f.submit "Post", class: "btn btn-primary btn-submit" %>

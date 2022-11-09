@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :content
       t.integer :status
-      t.integer :commit_status, :default => 0
+      t.integer :commit_status
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
