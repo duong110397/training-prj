@@ -22,7 +22,7 @@ gem "importmap-rails"
 gem 'ckeditor', '4.2.4'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
-
+gem 'slack-ruby-client'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
