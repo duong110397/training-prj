@@ -1,6 +1,6 @@
 <%= form_with(model: @post, url: create_post_guest_posts_path, local: true) do |f| %>
   <div class="field">
-    <%=f.label :title %><br> 
+    <%= f.label :title %><br> 
     <%= f.text_field :title, class: 'form-control', placeholder: "title posts..." %>
   </div>
   <div class=”field“>
@@ -8,7 +8,7 @@
     <%= f.text_area :content, class: "ckeditor" %>
   </div>
   <span class="image">
-    <%=f.label :image %><br>
+    <%= f.label :image %><br>
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png"%> 
   </span>
   <%= f.submit "Post", class: "btn btn-primary btn-submit" %>
