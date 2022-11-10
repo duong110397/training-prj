@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   enum role: [:user, :admin]
-  after_create :send_email_create_user
+  # after_create :send_email_create_user
   before_validation :downcase_email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   #delete devise validate to custome validate
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   self.email = email.downcase if email.present?
   end
   
-  def send_email_create_user
-    UserCreateMailer.create(self).deliver_now
-  end
+  # def send_email_create_user
+  #   UserCreateMailer.create(self).deliver_now
+  # end
 end
