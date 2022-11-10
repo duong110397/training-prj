@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
   
   def create_post_guest  
-    @post = Post.new(title: params[:title], content: params[:content], commit_status: "waiting_status", status: "non_public",user_id: 999)
+    @post = Post.new(title: params[:title], content: params[:content], commit_status: "waiting_status", status: "non_public")
     @post.image.attach(params[:image])
     if @post.save
       client = Slack::Web::Client.new
