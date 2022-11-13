@@ -5,13 +5,13 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  config.action_mailer.default_url_options = { host: 'trainningrails.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'railstrainning.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:'smtp.gmail.com',
     port:587,
     user_name: 'gblhiep@gmail.com',
-    password: 'ycxixscwvcxasyfo',
+    password: 'efwzeuvizaknwqpk',
     authentication: :plain,
     enable_starttls_auth: true
   }
