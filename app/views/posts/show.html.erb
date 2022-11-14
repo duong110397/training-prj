@@ -3,7 +3,7 @@
     <div class="blog-content"> 
       <summary> 
         <h3><%= @post.title %></h3> 
-	<div class="blog-date"><%= @post.created_at.strftime("%d/%m/%Y") %></div> 
+	      <div class="blog-date"><%= @post.created_at.strftime("%d/%m/%Y") %></div> 
       </summary> 
       <p><%= @post.content.html_safe %></p> 
     </div> 
@@ -12,3 +12,32 @@
     </div>  
   </article> 
 </div>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<h3 class="count-comment"><%= pluralize(@comments.count, "comment") %>.</h3>
+<section class="content-item" id="comments">
+  <div class="container">   
+    <div class="row">  
+      <div class="col-sm-8">   
+        <%= form_with(model: [@post, @comment], local: false) do |f| %>
+          <h3 class="pull-left">New Comment</h3>
+          <%= f.submit "Post", class: "btn btn-primary pull-right" %>
+          <fieldset>
+            <div class="row">
+              <div class="col-sm-3 col-lg-2 hidden-xs">
+                <img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+              </div>
+              <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                <%= f.cktext_area :content, class: "ckeditor", id: "message" %>
+              </div>
+            </div>  	
+          </fieldset>
+        <% end %>       
+        <div id="comments">       
+        <% @comments.each do |comment| %>
+          <%= render comment %> 
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
