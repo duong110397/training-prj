@@ -1,34 +1,29 @@
 <h1>Posts of me</h1>
-<div class="box-cards-blog -list">
+<div class="container">
   <% @posts.each do |post| %>
     <div class="card">
-      <div class="card-image">
+      <div class="card__header">
         <%= image_tag post.image if post.image.attached? %>
       </div>
-      <div class="card-meta">
-        <div class="card-top">
-          <p class="cat"><%= post.status %></p>
-          <span class="date"><%= time_ago_in_words(post.created_at) %></span>
-        </div>
-        <div class="card-title">
-          <h2 class="card-title"><%= link_to post.title, post %></h2>
-          <% if current_user.admin? || post.user == current_user %>
-            <%= link_to "delete", post_path(post), method: :delete, class: "btn btn-danger delete", remote: true, data: {confirm: "Are you sure?"} %>
-          <% end %>
-        </div>
-        <div class="card-bottom">
-          <div class="user">
-            <div class="avatar">
-              <img src="/assets/avatar1.png" alt="" />
-            </div>
-            <span class="username"><%= post.user ? post.user.name : "Anonymous" %></span>
+      <div class="card__body">
+        <span class="tag tag-blue"><%= post.status %></span>
+        <h4><%= link_to "#{post.title}", post  %></h4>
+      </div>
+      <div class="card__footer">
+        <div class="user">
+          <img src="https://i.pravatar.cc/40?img=2" alt="user__image" class="user__image">
+          <div class="user__info">
+            <h5><%= post.user ? post.user.name : "Anonymous" %></h5>
+            <small><%= time_ago_in_words(post.created_at) %> ago</small>
           </div>
-          <%= link_to "Read more → ", post, :class => "readmore" %>
         </div>
       </div>
+      <% if current_user.admin? || post.user == current_user %>
+        <%= link_to "delete", post_path(post), method: :delete, class: "btn btn-danger delete", remote: true, data: {confirm: "Are you sure?"} %>
+      <% end %>
     </div>
   <% end %>
 </div>
-<div class="box-cards-blog -list">
+<div class="container">
   <%= link_to "Create Blog", new_post_path, :class => "btn btn-primary blog-btn" %>
 </div>
