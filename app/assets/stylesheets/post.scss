@@ -33,7 +33,7 @@ img {
 .card {
   display: flex;
   flex-direction: column;
-  width: 18%;
+  width: 220px;
   overflow: hidden;
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
@@ -109,7 +109,7 @@ img {
 .btn-guest {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 10px;
 }
 
