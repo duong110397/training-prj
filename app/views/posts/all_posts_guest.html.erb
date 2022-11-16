@@ -1,28 +1,25 @@
-<div class="box-cards-blog -grid">
+<div class="container">
   <% @posts.each do |post| %>
     <div class="card">
-      <div class="card-image">
+      <div class="card__header">
         <%= image_tag post.image if post.image.attached? %>
       </div>
-      <div class="card-meta">
-        <div class="card-top">
-          <p class="cat"><%= post.status %></p>
-          <span class="date"><%= time_ago_in_words(post.created_at) %></span>
-        </div>
-        <h2 class="card-title"><a href="#"><%= post.title %></a></h2>
-        <div class="card-bottom">
-          <div class="user">
-            <div class="avatar">
-              <img src="/assets/avatar1.png" alt="" />
-            </div>
-            <span class="username">Anonymous</span>
+      <div class="card__body">
+        <span class="tag tag-blue"><%= post.status %></span>
+        <h4><%= link_to "#{post.title}", post  %></h4>
+      </div>
+      <div class="card__footer">
+        <div class="user">
+          <img src="https://i.pravatar.cc/40?img=2" alt="user__image" class="user__image">
+          <div class="user__info">
+            <h5><%= post.user ? post.user.name : "Anonymous" %></h5>
+            <small><%= time_ago_in_words(post.created_at) %> ago</small>
           </div>
-          <%= link_to "Read more → ", post, :class => "readmore" %>
         </div>
       </div>
       <div class="btn-guest">
-      <%= link_to 'approve', confirm_post_guest_posts_path(:id => post.id, :commit_status => "approve"), :method => :patch, :class => "btn btn-success" %> 
-      <%= link_to 'reject', confirm_post_guest_posts_path(:id => post.id, :commit_status => "reject"), :method => :patch, :class => "btn btn-danger" %>
+        <%= link_to 'approve', confirm_post_guest_posts_path(:id => post.id, :commit_status => "approve"), :method => :patch, :class => "btn btn-success" %> 
+        <%= link_to 'reject', confirm_post_guest_posts_path(:id => post.id, :commit_status => "reject"), :method => :patch, :class => "btn btn-danger" %>
       </div>
     </div>
   <% end %>

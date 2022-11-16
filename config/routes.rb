@@ -17,7 +17,11 @@ Rails.application.routes.draw do
       patch :confirm_post_guest
     end
   end
+  resources :export_users, only: :index
   resources :users
   resources :posts
+  resources :posts do
+    resources :comments
+  end
   root to: "posts#index"
 end

@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
+  has_many :comments
   enum role: [:user, :admin]
   after_create :send_email_create_user
   before_validation :downcase_email
+  CSV_ATTRIBUTES = %w(name email birthday).freeze
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   #delete devise validate to custome validate
   devise :database_authenticatable, :registerable,

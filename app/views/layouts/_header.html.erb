@@ -16,8 +16,10 @@
       </ul>
     </nav>
   <% end %>
+  
   <!-- Page Content  -->
   <div id="content">
+  <% unless current_page?(new_user_session_path) %>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <div class="collapse navbar-collapse navbar-flex "id="navbarSupportedContent">
@@ -38,4 +40,5 @@
         </div>
       </div>
     </nav>
+  <% end %>
     <div class="containner-content">  
