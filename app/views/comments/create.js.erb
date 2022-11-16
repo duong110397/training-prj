@@ -1,0 +1,2 @@
+$('#comments:nth-child(2)').prepend("<%= j render @comment %>")
+$('.count-comment').html(`${parseInt($('.count-comment').html(), 10)+1} comments`)
