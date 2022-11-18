@@ -11,6 +11,7 @@ gem 'figaro'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 gem 'devise'
+gem 'acts_as_votable'
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
 gem 'slack-ruby-client'
