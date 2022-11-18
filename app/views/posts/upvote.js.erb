@@ -1,0 +1,2 @@
+$("#upvote-<%= @post.id %>").html("<%= j render "posts/upvote_btn", post: @post %>");
+$("#votes-score-<%= @post.id %>").html("<%= j render "posts/votes_score", post: @post %>");

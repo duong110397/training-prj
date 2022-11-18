@@ -10,7 +10,14 @@
     <div class="blog-img"> 
       <%= image_tag @post.image if @post.image.attached? %> 
     </div>  
-  </article> 
+  </article>
+  <% if user_signed_in? %>
+    <div class="vote-container">
+      <%= render "posts/upvote_btn", post: @post %></td>
+      <%= render "posts/votes_score", post: @post %></td>
+      <%= render "posts/downvote_btn", post: @post %></td>
+    </div>
+  <% end %>
 </div>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <h3 class="count-comment"><%= pluralize(@comments.count, "comment") %>.</h3>

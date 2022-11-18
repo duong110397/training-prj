@@ -1,12 +1,27 @@
 class PostsController < ApplicationController
   before_action :logged_in, except: [:index, :show, :new_post_guest, :create_post_guest]
-  before_action :find_post, only: [:show, :edit, :update, :confirm_post_guest, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :confirm_post_guest, :destroy, :upvote, :downvote]
   before_action :admin_role, only: [:destroy, :confirm_post_guest, :all_posts_guest]
   before_action :correct_user, only: [:edit, :update]
   def index
     @posts = Post.where(status: "public_post").order(created_at: :desc)
   end
     
+  def upvote
+    if current_user.voted_up_on? @post
+      @post.unvote_by current_user
+    else
+      @post.upvote_by current_user
+    end
+  end
+
+  def downvote
+    if current_user.voted_down_on? @post
+      @post.unvote_by current_user
+    else
+      @post.downvote_by current_user
+    end
+  end
   def new
     @post = Post.new
   end
