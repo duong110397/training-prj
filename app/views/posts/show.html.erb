@@ -22,7 +22,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <h3 class="count-comment"><%= pluralize(@comments.count, "comment") %>.</h3>
 <section class="content-item" id="comments">
-  <div class="container">   
+  <div class="container comment-container">   
     <div class="row">  
       <div class="col-sm-8">   
         <%= form_with(model: [@post, @comment], local: false) do |f| %>

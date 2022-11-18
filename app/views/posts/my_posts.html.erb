@@ -18,9 +18,9 @@
           </div>
         </div>
       </div>
-      <% if current_user.admin? || post.user == current_user %>
-        <%= link_to "delete", post_path(post), method: :delete, class: "btn btn-danger delete", remote: true, data: {confirm: "Are you sure?"} %>
-      <% end %>
+      <%# if current_user.admin? || post.user == current_user %>
+        <%#= link_to "delete", post_path(post), method: :delete, class: "btn btn-danger delete", remote: true, data: {confirm: "Are you sure?"} %>
+      <%# end %>
     </div>
   <% end %>
 </div>
