@@ -17,6 +17,12 @@ Rails.application.routes.draw do
       patch :confirm_post_guest
     end
   end
+  resources :posts do
+    member do
+      patch "upvote", to: "posts#upvote"
+      patch "downvote", to: "posts#downvote"
+    end
+  end
   resources :export_users, only: :index
   resources :users
   resources :posts

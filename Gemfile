@@ -14,6 +14,7 @@ gem 'devise'
 # Use mysql as the database for Active Record
 gem "pg", "~> 1.1"
 gem 'slack-ruby-client'
+gem 'acts_as_votable'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 gem 'jquery-rails'

@@ -1,12 +1,27 @@
 class PostsController < ApplicationController
   before_action :logged_in, except: [:index, :show, :new_post_guest, :create_post_guest]
-  before_action :find_post, only: [:show, :edit, :update, :confirm_post_guest, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :confirm_post_guest, :destroy, :upvote, :downvote]
   before_action :admin_role, only: [:destroy, :confirm_post_guest, :all_posts_guest]
   before_action :correct_user, only: [:edit, :update]
   def index
     @posts = Post.where(status: "public_post").order(created_at: :desc)
   end
     
+  def upvote
+    if current_user.voted_up_on? @post
+      @post.unvote_by current_user
+    else
+      @post.upvote_by current_user
+    end
+  end
+
+  def downvote
+    if current_user.voted_down_on? @post
+      @post.unvote_by current_user
+    else
+      @post.downvote_by current_user
+    end
+  end
   def new
     @post = Post.new
   end
@@ -43,9 +58,9 @@ class PostsController < ApplicationController
     @post = Post.new(title: params[:title], content: params[:content], commit_status: "waiting_status", status: "non_public")
     @post.image.attach(params[:image])
     if @post.save
-      # client = Slack::Web::Client.new
-      # client.auth_test
-      # client.chat_postMessage(channel: "#general", text: markdown_text(@post))
+      client = Slack::Web::Client.new
+      client.auth_test
+      client.chat_postMessage(channel: '#general', text: markdown_text(@post))
       redirect_to root_url, :notice => "You have successfully posted, your post is waiting for approval"
     else
       redirect_to root_url, :alert => "Has errors in during create posted"
