@@ -332,11 +332,7 @@ b {
   font-size:15px;
   margin-right:10px;
 }
-@media (min-width: 1200px) {
-  .comment-container {
-    width: fit-content;
-  }
-}
+
 @media (min-width: 768px){
   .col-sm-8 {
     width: fit-content;
