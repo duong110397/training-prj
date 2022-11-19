@@ -1,3 +1,7 @@
 <%= content_tag "div", id: "votes-score-#{post.id}", class: "score-vote" do %>
-  <%= post.cached_votes_score %>
+  <% if post.cached_votes_score > 0 %>
+    +<%=  post.cached_votes_score %>
+  <% else %>
+    <%= post.cached_votes_score %>
+  <% end %> 
 <% end %>
