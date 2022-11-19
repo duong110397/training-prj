@@ -13,6 +13,9 @@ class PostsController < ApplicationController
     else
       @post.upvote_by current_user
     end
+    respond_to do |format|
+      format.js { render :action => 'vote' }
+    end
   end
 
   def downvote
@@ -20,6 +23,9 @@ class PostsController < ApplicationController
       @post.unvote_by current_user
     else
       @post.downvote_by current_user
+    end
+    respond_to do |format|
+      format.js { render :action => 'vote' }
     end
   end
   def new
