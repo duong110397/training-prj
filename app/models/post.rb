@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   acts_as_votable
+  default_scope { order(:cached_votes_score => :desc) } 
   belongs_to :user, required: false
   has_many :comments, dependent: :destroy
   has_one_attached :image

@@ -109,7 +109,7 @@ img {
 .btn-guest {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 10px;
 }
 
@@ -331,11 +331,6 @@ b {
   color:#666666;
   font-size:15px;
   margin-right:10px;
-}
-@media (min-width: 1200px) {
-  .container {
-    width: fit-content;
-  }
 }
 @media (min-width: 768px){
   .col-sm-8 {
