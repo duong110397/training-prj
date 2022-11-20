@@ -64,9 +64,9 @@ class PostsController < ApplicationController
     @post = Post.new(title: params[:title], content: params[:content], commit_status: "waiting_status", status: "non_public")
     @post.image.attach(params[:image])
     if @post.save
-      client = Slack::Web::Client.new
-      client.auth_test
-      client.chat_postMessage(channel: '#general', text: markdown_text(@post))
+      # client = Slack::Web::Client.new
+      # client.auth_test
+      # client.chat_postMessage(channel: '#general', text: markdown_text(@post))
       redirect_to root_url, :notice => "You have successfully posted, your post is waiting for approval"
     else
       redirect_to root_url, :alert => "Has errors in during create posted"
