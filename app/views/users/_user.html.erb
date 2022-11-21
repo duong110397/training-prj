@@ -3,7 +3,7 @@
   <td> <%= user.email %> </td>
   <td> <%= user.name %> </td>
   <td> <%= user.birthday.strftime("%d/%m/%Y") if user.birthday %> </td>
-  <td> 
+  <td class="tduser"> 
     <% if current_user.admin? || user == current_user %>
       <%= link_to 'Edit', edit_user_path(user), class: "btn btn-primary" %>
     <% end %>
